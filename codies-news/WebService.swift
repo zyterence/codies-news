@@ -14,12 +14,6 @@ var url = URL(string: headlines)!
 
 final class Webservice {
     
-    class func load(url: URL, parse:@escaping (Data)->News?) {
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            _ = data.flatMap(parse)
-        }.resume()
-    }
-    
     class func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in
             guard let data = data else {
@@ -31,16 +25,6 @@ final class Webservice {
     }
     
     class func test() {
-        Webservice.load(url: url) { data -> News? in
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            guard let dictionary = json as? JSONDictionary else {
-                return nil
-            }
-            let news = News(dictionary: dictionary)
-            print(news?.status ?? "")
-            return news
-        }
-        
         Webservice.load(resource: News.headlines) { news in
             print(news?.articles[0].title ?? "")
         }

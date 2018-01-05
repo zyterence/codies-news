@@ -18,10 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = self.window else { return false }
-        
-        window.rootViewController = ViewController()
+        let vc = ViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.barTintColor = #colorLiteral(red: 0.3607843137, green: 0.7803921569, blue: 0.6980392157, alpha: 1)
+        nav.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        nav.navigationBar.prefersLargeTitles = true
+        window.rootViewController = nav
         window.backgroundColor = UIColor.white
         window.makeKeyAndVisible()
+
+//        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.3607843137, green: 0.7803921569, blue: 0.6980392157, alpha: 1)
+//        UINavigationBar.appearance().tintColor = .white
+//        UINavigationBar.appearance().barStyle = .black
         return true
     }
 
