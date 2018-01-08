@@ -14,7 +14,6 @@
 		0FE383451FFDE03800CB41AD /* codies_newsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE383441FFDE03800CB41AD /* codies_newsTests.swift */; };
 		0FE383501FFDE08600CB41AD /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3834F1FFDE08600CB41AD /* WebService.swift */; };
 		0FE383521FFE125000CB41AD /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE383511FFE125000CB41AD /* News.swift */; };
-		0FE383541FFE1B4C00CB41AD /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE383531FFE1B4C00CB41AD /* Resource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +38,6 @@
 		0FE383461FFDE03800CB41AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE3834F1FFDE08600CB41AD /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		0FE383511FFE125000CB41AD /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		0FE383531FFE1B4C00CB41AD /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,6 @@
 				0FE3832F1FFDE03700CB41AD /* AppDelegate.swift */,
 				0FE383311FFDE03700CB41AD /* ViewController.swift */,
 				0FE3834F1FFDE08600CB41AD /* WebService.swift */,
-				0FE383531FFE1B4C00CB41AD /* Resource.swift */,
 				0FE383511FFE125000CB41AD /* News.swift */,
 				0FE383361FFDE03700CB41AD /* Assets.xcassets */,
 				0FE383381FFDE03700CB41AD /* LaunchScreen.storyboard */,
@@ -207,7 +204,6 @@
 				0FE383501FFDE08600CB41AD /* WebService.swift in Sources */,
 				0FE383321FFDE03700CB41AD /* ViewController.swift in Sources */,
 				0FE383521FFE125000CB41AD /* News.swift in Sources */,
-				0FE383541FFE1B4C00CB41AD /* Resource.swift in Sources */,
 				0FE383301FFDE03700CB41AD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

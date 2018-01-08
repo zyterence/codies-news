@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = self.window else { return false }
         let vc = ViewController()
@@ -27,9 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.backgroundColor = UIColor.white
         window.makeKeyAndVisible()
 
-//        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.3607843137, green: 0.7803921569, blue: 0.6980392157, alpha: 1)
-//        UINavigationBar.appearance().tintColor = .white
-//        UINavigationBar.appearance().barStyle = .black
         return true
     }
 

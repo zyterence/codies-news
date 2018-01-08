@@ -8,58 +8,46 @@
 
 import Foundation
 
-struct Source {
-    let id: String?
-    let name: String?
-}
+struct News: Codable {
 
-struct Article {
-    let source: Source?
-    let author: String?
-    let title: String?
-    let description: String?
-    let url: String?
-    let urlToImage: String?
-    let publishedAt: String?
-}
+    struct Article: Codable {
 
-extension Article {
-    init?(dictionary: JSONDictionary) {
-        let id = dictionary["id"] as? String
-        let name = dictionary["name"] as? String
-        source = Source(id: id, name: name)
-        author = dictionary["author"] as? String
-        title = dictionary["title"] as? String
-        description = dictionary["description"] as? String
-        url = dictionary["url"] as? String
-        urlToImage = dictionary["urlToImage"] as? String
-        publishedAt = dictionary["publishedAt"] as? String
+        struct Source: Codable {
+            let id: String
+            let name: String
+            
+            init(id: String, name:String) {
+                self.id = id
+                self.name = name
+            }
+        }
+        
+        let source: Source
+        let author: String?
+        let title: String
+        let description: String?
+        let url: String
+        let urlToImage: String?
+        let publishedAt: String?
+        
+        init(source: Source, author: String, title: String, description: String, url: String, urlToImage: String, publishedAt: String) {
+            self.source = source
+            self.author = author
+            self.title = title
+            self.description = description
+            self.url = url
+            self.urlToImage = urlToImage
+            self.publishedAt = publishedAt
+        }
     }
-}
-
-struct News {
+    
     let status: String
     let totalResults: Int
-    let articles: Array<Article>
-}
-
-extension News {
-    init?(dictionary: JSONDictionary) {
-        guard let status = dictionary["status"] as? String,
-            let totalResults = dictionary["totalResults"] as? Int,
-            let articles = dictionary["articles"] as? [JSONDictionary]
-            else { return nil }
+    let articles: [Article]
+    
+    init(status: String, totalResults: Int, articles: [Article]) {
         self.status = status
         self.totalResults = totalResults
-        self.articles = articles.flatMap({ (dictionary) -> Article? in
-            return Article(dictionary: dictionary)
-        })
+        self.articles = articles
     }
-}
-
-extension News {
-    static let headlines = Resource<News>(url: url, parseJSON: { json in
-        guard let dictionary = json as? JSONDictionary else { return nil }
-        return News(dictionary: dictionary)
-    })
 }
