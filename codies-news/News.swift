@@ -13,6 +13,7 @@ struct News: Codable {
     struct Article: Codable {
 
         struct Source: Codable {
+            
             let id: String
             let name: String
             

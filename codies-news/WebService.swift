@@ -13,26 +13,31 @@ var headlines = "https://newsapi.org/v2/top-headlines?sources=hacker-news&apiKey
 var url = URL(string: headlines)!
 
 final class Webservice {
-
-    class func load(url: URL, completion: @escaping (Data) -> ()) {
+    
+    class func load<A:Codable>(url: URL, completion: @escaping (A?) -> ()) {
         
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else {
+                completion(nil)
                 return
             }
-            completion(data)
-        }.resume()
+            let decoder = JSONDecoder()
+            let result = try! decoder.decode(A.self, from: data)
+            completion(result)
+            }.resume()
+    }
+    
+    class func loadNews(completion: @escaping (News?) -> ()) {
+        load(url: url) { news in
+            completion(news)
+        }
     }
     
     class func test() {
-        
-        load(url: url) { data in
-            let decoder = JSONDecoder()
-            let news = try! decoder.decode(News.self, from: data)
-            
-            print(news.status)
-            print(news.articles[0].source.name)
-            print(news.articles[0].author ?? "")
+        loadNews { news in
+            print(news?.status ?? "")
+            print(news?.articles[0].source.name ?? "")
+            print(news?.articles[0].author ?? "")
         }
     }
 }
